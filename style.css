@@ -22,3 +22,9 @@ body{background-color: black;}
 
   
 }
+#operators{
+    background-color: rgb(11, 121, 218);
+}
+.operators{
+    font-size: 50px;
+}
