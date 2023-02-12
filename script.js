@@ -11,9 +11,22 @@ console.log(e.target.textContent)
 problem += e.target.textContent
 show(problem)
 if (e.target.textContent == "="){
-    problem =problem.split('+')
-    problem[1]= problem[1].replace('=','')
-    add(problem)
+    if (problem.includes('+')){
+        problem =problem.split('+')
+        problem[1]= problem[1].replace('=','')
+        add(problem)}
+    if (problem.includes('-')){
+        problem =problem.split('-')
+        problem[1]= problem[1].replace('=','')
+        sub(problem)}
+    if (problem.includes('x')){
+         problem =problem.split('x')
+        problem[1]= problem[1].replace('=','')
+        mult(problem)}
+    if (problem.includes('÷')){
+         problem =problem.split('÷')
+         problem[1]= problem[1].replace('=','')
+        div(problem)}
 
 }
 }
@@ -22,24 +35,20 @@ function add(problem) {
    answer=parseFloat(problem[0])+parseFloat(problem[1])
     showAnswer(answer)
 }
-function sub(num1,num2) {
-    return num1-num2
+function sub(problem) {
+    answer=parseFloat(problem[0])-parseFloat(problem[1])
+    showAnswer(answer)
 }
-function mult(num1,num2) {
-    return num1*num2
+function mult(problem) {
+    answer=parseFloat(problem[0])*parseFloat(problem[1])
+    console.log(answer)
+    showAnswer(answer)
 }
-function div(num1,num2) {
-    return num1/num2
+function div(problem) {
+    answer=parseFloat(problem[0])/parseFloat(problem[1])
+    showAnswer(answer)
 }
 
-function operate(num1, operator, num2){
-    if (operator == '+'){
-        add(num1,num2)
-    }
-
-
-
-}
 function addListeners(){
     numbers.forEach(numberButton=>
     numberButton.addEventListener('click', number))
@@ -51,7 +60,7 @@ function show(){
 }
 function showAnswer(){
     display.innerHTML = answer
-    
+
 }
 addListeners()
  
