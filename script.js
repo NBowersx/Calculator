@@ -1,6 +1,7 @@
 const numbers= document.querySelectorAll('.numbers')
 const operators= document.querySelectorAll('.operators')
 const display= document.getElementById('display')
+const clear= document.getElementById('clear')
 let problem= []
 let answer=[]
 
@@ -48,13 +49,20 @@ function div(problem) {
     answer=parseFloat(problem[0])/parseFloat(problem[1])
     showAnswer(answer)
 }
+function clearScreen(){
+    problem=[]
+    answer=[]
+    show()
+}
 
 function addListeners(){
     numbers.forEach(numberButton=>
     numberButton.addEventListener('click', number))
     operators.forEach(operatorButton=>
        operatorButton.addEventListener('click', number)
-)}
+)
+        clear.addEventListener('click',clearScreen)
+}
 function show(){
   display.innerHTML = problem
 }
