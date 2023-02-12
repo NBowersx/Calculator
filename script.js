@@ -1,25 +1,26 @@
 const numbers= document.querySelectorAll('.numbers')
 const operators= document.querySelectorAll('.operators')
+const display= document.getElementById('display')
 let problem= []
+let answer=[]
 
 
 
 function number(e){
 console.log(e.target.textContent)
 problem += e.target.textContent
-console.log(problem)
+show(problem)
 if (e.target.textContent == "="){
     problem =problem.split('+')
     problem[1]= problem[1].replace('=','')
-    console.log(problem[1])
     add(problem)
 
 }
 }
 
 function add(problem) {
-    problem=parseFloat(problem[0])+parseFloat(problem[1])
-    console.log(problem)
+   answer=parseFloat(problem[0])+parseFloat(problem[1])
+    showAnswer(answer)
 }
 function sub(num1,num2) {
     return num1-num2
@@ -45,4 +46,13 @@ function addListeners(){
     operators.forEach(operatorButton=>
        operatorButton.addEventListener('click', number)
 )}
+function show(){
+  display.innerHTML = problem
+}
+function showAnswer(){
+    display.innerHTML = answer
+    
+}
 addListeners()
+ 
+
