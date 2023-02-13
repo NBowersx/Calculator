@@ -3,6 +3,7 @@ const operators= document.querySelectorAll('.operators')
 const display= document.getElementById('display')
 const clear= document.getElementById('clear')
 const back= document.getElementById('back')
+const last= document.getElementById('last')
 let problem= []
 let answer=[]
 let ops =['+','-','x','÷']
@@ -56,7 +57,7 @@ if (e.target.textContent == "="){
 
 function add(problem) {
    answer=parseFloat(problem[0])+parseFloat(problem[1])
-    showAnswer(answer)
+    showAnswer(answer,problem)
 }
 function sub(problem) {
     answer=parseFloat(problem[0])-parseFloat(problem[1])
@@ -92,6 +93,7 @@ function show(){
 }
 function showAnswer(){
     display.innerHTML = answer
+    last.innerHTML = problem
     return problem = answer
 
 }
