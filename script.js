@@ -2,33 +2,55 @@ const numbers= document.querySelectorAll('.numbers')
 const operators= document.querySelectorAll('.operators')
 const display= document.getElementById('display')
 const clear= document.getElementById('clear')
+const back= document.getElementById('back')
 let problem= []
 let answer=[]
-
+let ops =['+','-','x','÷']
+let series =''
 
 
 function number(e){
-console.log(e.target.textContent)
 problem += e.target.textContent
-show(problem)
+show(problem) 
+
 if (e.target.textContent == "="){
+    //might want to make this its own function also cut the repetitive code
+  
+
+    //checks for no operators 
+     if(!problem.includes(operators)){
+        problem= problem.replace('=','')
+        answer=problem
+        showAnswer(answer)
+    }
     if (problem.includes('+')){
         problem =problem.split('+')
         problem[1]= problem[1].replace('=','')
-        add(problem)}
+        add(problem)
+    }
     if (problem.includes('-')){
         problem =problem.split('-')
         problem[1]= problem[1].replace('=','')
-        sub(problem)}
+        sub(problem)
+    }
     if (problem.includes('x')){
-         problem =problem.split('x')
-        problem[1]= problem[1].replace('=','')
-        mult(problem)}
-    if (problem.includes('÷')){
-         problem =problem.split('÷')
-         problem[1]= problem[1].replace('=','')
-        div(problem)}
 
+        problem =problem.split('x')
+        problem[1]= problem[1].replace('=','')
+        series = problem
+        
+        mult(problem)
+    }
+    if (problem.includes('÷')){
+         problem =problem.split('÷') 
+         problem[1]= problem[1].replace('=','')
+         if (problem[1]== 0){
+            answer='dont divide by 0 buddy'
+            showAnswer(answer)
+    }
+         else
+        
+        div(problem)}
 }
 }
 
@@ -49,6 +71,7 @@ function div(problem) {
     answer=parseFloat(problem[0])/parseFloat(problem[1])
     showAnswer(answer)
 }
+
 function clearScreen(){
     problem=[]
     answer=[]
@@ -56,18 +79,20 @@ function clearScreen(){
 }
 
 function addListeners(){
+
     numbers.forEach(numberButton=>
     numberButton.addEventListener('click', number))
     operators.forEach(operatorButton=>
        operatorButton.addEventListener('click', number)
 )
-        clear.addEventListener('click',clearScreen)
+clear.addEventListener('click',clearScreen);
 }
 function show(){
   display.innerHTML = problem
 }
 function showAnswer(){
     display.innerHTML = answer
+    return problem = answer
 
 }
 addListeners()

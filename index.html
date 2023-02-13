@@ -8,29 +8,51 @@
     <title>Calculator</title>
 </head>
 <body>
+  <div class="container">
+  <div id='calculator'>  
     <div id="display"></div>
-    <button id="clear">CLEAR</button>
-
-    <div id="numbers">
-        <div class="numbers" id="9">9</div>
-        <div class="numbers" id="8">8</div>
-        <div class="numbers" id="7">7</div>
-        <div class="numbers" id="6">6</div>
-        <div class="numbers" id="5">5</div>
-        <div class="numbers" id="4">4</div>
-        <div class="numbers" id="3">3</div>
-        <div class="numbers" id="2">2</div>
-        <div class="numbers" id="1">1</div>
-        <div class="numbers" id="0">0</div>
-    </div>
-    <div id="operators">
-        <div class="operators" id="+">+</div>
-        <div class="operators" id="-">-</div>
-        <div class="operators" id="/">÷</div>
-        <div class="operators" id="*">x</div>
-        <div class="operators" id="=">=</div>
-    </div>
+    <div id="buttons">
+      <div class="row1">
+      <button class="operators" id="/">÷</button>
+      <button id="clear">CE</button>
+      <button id="back">back</button>
+        
+</div>
+      <div class="row2">
+        <button class="operators" id="*">x</button>
+        <button class="numbers" id="9" data-key="49">9</button>
+        <button class="numbers" id="8" data-key="">8</button>
+        <button class="numbers" id="7" data-key="">7</button>
+</div>
+      <div class="row3">
+        <button class="operators" id="-">-</button>
+        <button class="numbers" id="6" data-key="">6</button>
+        <button class="numbers" id="5" data-key="">5</button>
+        <button class="numbers" id="4" data-key="">4</button>
+</div>
+      <div class="row4">
+        <button class="operators" id="+">+</button>
+        <button class="numbers" id="3" data-key="">3</button>
+        <button class="numbers" id="2" data-key="">2</button>
+        <button class="numbers" id="1" data-key="">1</button>
+</div>
+      <div class="row5">
+        <button class="operators" id="=">=</button>
+        <button class="numbers" id="00" data-key="">00</button>
+        <button class="numbers" id="0" data-key="">0</button>
+        
+        <button class="numbers" id="." data-key="">.</button>
+        
     
+
+      
+         
+       </div>
+      </div>  
+  </div>
+
+</div>  
+
 </body>
 <script src="script.js"></script>
 </html>
