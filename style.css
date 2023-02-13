@@ -59,6 +59,7 @@ button{
     flex-basis: 225px;
     height: 50px;
     font-size: 20px;
+    cursor: default;
 }
 .screen{
     display: flex;
