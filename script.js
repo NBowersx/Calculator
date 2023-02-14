@@ -20,6 +20,14 @@ show(problem)
 
     //stops using operators back to back
    if (ops.includes(e.target.textContent)){
+    if (ops.includes(problem.substring(0,problem.length-1))){
+        console.log('sting ')
+        console.log('')
+        console.log('')
+        console.log('')
+        console.log('')
+    }
+
      check = problem.slice(-2)
      console.log(check.charAt(0))
     if(ops.includes(check.charAt(0))){
@@ -89,7 +97,10 @@ function div(problem) {
     answer=parseFloat(problem[0])/parseFloat(problem[1])
     showAnswer(answer)
 }
-
+function deleteLast(){
+   problem= problem.replace(problem.charAt(problem.length-1),'')
+   show()
+}
 function clearScreen(){
     problem=[]
     answer=[]
@@ -100,10 +111,10 @@ function clearScreen(){
 function addListeners(){
     document.addEventListener('keydown', e =>{
         const key = document.querySelector(`button[data-key="${e.keyCode}"]`);
-        if (key) {
+
           e.preventDefault();
           key.click();
-        }})
+        })
     
 
 
@@ -112,7 +123,7 @@ function addListeners(){
 
     operators.forEach(operatorButton=>
     operatorButton.addEventListener('click', number))
-
+    back.addEventListener('click',deleteLast);
     clear.addEventListener('click',clearScreen);
 }
 function show(){
