@@ -5,19 +5,35 @@ const clear= document.getElementById('clear')
 const back= document.getElementById('back')
 const last= document.getElementById('last')
 
+
 let problem= ''
 let equation=''
 let answer=''
 let ops =['+','-','x','÷']
 let series =''
+let check = ''
+let n= 0
+
 
 function number(e){
 problem += e.target.textContent
 show(problem) 
 
+    //stops using operators back to back
+   if (ops.includes(e.target.textContent)){
+     check = problem.slice(-2)
+     console.log(check.charAt(0))
+    if(ops.includes(check.charAt(0))){
+    n = problem.length-2
+    problem=problem.replace(problem.charAt(n),'')
+    show(problem)
+    }
+
+    }
 if (e.target.textContent == "="){
     //might want to make this its own function also cut the repetitive code
-  
+    
+ 
 
     //checks for no operators 
      if(!problem.includes(operators)){
@@ -68,7 +84,6 @@ function sub(problem) {
 }
 function mult(problem) {
     answer=parseFloat(problem[0])*parseFloat(problem[1])
-    console.log(answer)
     showAnswer(answer)
 }
 function div(problem) {
@@ -82,9 +97,9 @@ function clearScreen(){
     show()
 }
 
+
 function addListeners(){
-
-
+ 
 
     numbers.forEach(numberButton=>
     numberButton.addEventListener('click', number))
@@ -94,7 +109,7 @@ function addListeners(){
 
     clear.addEventListener('click',clearScreen);
 
-    document.addEventListener('keydown', number);
+    document.addEventListener('keydown', type);
 }
 function show(){
   display.innerHTML = problem  
