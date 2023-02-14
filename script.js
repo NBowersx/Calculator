@@ -14,7 +14,6 @@ let series =''
 let check = ''
 let n= 0
 
-
 function number(e){
 problem += e.target.textContent
 show(problem) 
@@ -99,7 +98,14 @@ function clearScreen(){
 
 
 function addListeners(){
- 
+    document.addEventListener('keydown', e =>{
+        const key = document.querySelector(`button[data-key="${e.keyCode}"]`);
+        if (key) {
+          e.preventDefault();
+          key.click();
+        }})
+    
+
 
     numbers.forEach(numberButton=>
     numberButton.addEventListener('click', number))
@@ -108,8 +114,6 @@ function addListeners(){
     operatorButton.addEventListener('click', number))
 
     clear.addEventListener('click',clearScreen);
-
-    document.addEventListener('keydown', type);
 }
 function show(){
   display.innerHTML = problem  
